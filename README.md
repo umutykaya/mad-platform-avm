@@ -107,7 +107,7 @@ No other changes needed.
 pip install pyspark pytest
 
 # Run the job
-python jobs/ingest/transform_sales.py \
+cd jobs/ingest && python transform_sales.py \
   --input_path  ./sample_data/sales_raw \
   --output_path ./output/sales_clean \
   --env dev
