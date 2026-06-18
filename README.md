@@ -55,6 +55,40 @@ infra/
 
 ---
 
+## CI/CD Pipeline
+
+### GitHub Actions
+
+The repository includes an automated CI/CD pipeline using **GitHub Actions with OIDC authentication** (no static secrets required).
+
+**Workflow:** `.github/workflows/terraform.yml`
+
+**Triggers:**
+- Pull requests touching `infra/**`
+- Pushes to `main` branch touching `infra/**`
+- Manual workflow dispatch
+
+**Pipeline Steps:**
+1. **Azure Authentication** – OIDC-based login using workload identity federation
+2. **Terraform Format Check** – `terraform fmt -check -recursive`
+3. **Terraform Init** – Initialize providers (backend-less for validation)
+4. **Terraform Validate** – Validate configuration syntax
+5. **Terraform Plan** – Generate execution plan for review
+
+**Required GitHub Secrets:**
+- `AZURE_CLIENT_ID` – Application (client) ID of the Azure AD app registration
+- `AZURE_TENANT_ID` – Azure AD tenant ID
+- `AZURE_SUBSCRIPTION_ID` – Target Azure subscription ID
+
+**OIDC Configuration:**
+The Azure AD app registration is configured with federated credentials for GitHub Actions, eliminating the need for client secrets. This provides:
+- ✅ No secret rotation required
+- ✅ Short-lived tokens (1 hour)
+- ✅ Scoped to specific repository and branches
+- ✅ Audit trail through Azure AD
+
+---
+
 ## Terraform – How to Run
 
 ### Prerequisites
@@ -106,10 +140,12 @@ module "finance" {
   aad_group_id = var.aad_group_id
 }
 ```
-
-No other changes needed.
-
----
+Automated deployment** – extend CI/CD pipeline to run `terraform apply` automatically on main branch merges with approval gates.
+4. **Remote state backend** – configure Azure Storage backend for Terraform state with locking and encryption.
+5. **Secret rotation** – automate Key Vault secret rotation and link to Databricks secret scopes.
+6. **Monitoring** – Azure Monitor + Databricks cluster metrics dashboards, alerting on job failures.
+7. **Cost controls** – auto-termination policies on all clusters, budget alerts per Resource Group.
+8. **Multi-environment strategy** – separate pipelines for dev/staging/prod with environment-specific approvals
 
 ## Python Job – How to Run
 
