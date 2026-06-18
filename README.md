@@ -82,10 +82,10 @@ The repository includes an automated CI/CD pipeline using **GitHub Actions with 
 
 **OIDC Configuration:**
 The Azure AD app registration is configured with federated credentials for GitHub Actions, eliminating the need for client secrets. This provides:
-- ✅ No secret rotation required
-- ✅ Short-lived tokens (1 hour)
-- ✅ Scoped to specific repository and branches
-- ✅ Audit trail through Azure AD
+- No secret rotation required
+- Short-lived tokens (1 hour)
+- Scoped to specific repository and branches
+- Audit trail through Azure AD
 
 ---
 
@@ -140,12 +140,14 @@ module "finance" {
   aad_group_id = var.aad_group_id
 }
 ```
+
 Automated deployment** – extend CI/CD pipeline to run `terraform apply` automatically on main branch merges with approval gates.
-4. **Remote state backend** – configure Azure Storage backend for Terraform state with locking and encryption.
-5. **Secret rotation** – automate Key Vault secret rotation and link to Databricks secret scopes.
-6. **Monitoring** – Azure Monitor + Databricks cluster metrics dashboards, alerting on job failures.
-7. **Cost controls** – auto-termination policies on all clusters, budget alerts per Resource Group.
-8. **Multi-environment strategy** – separate pipelines for dev/staging/prod with environment-specific approvals
+
+1. **Remote state backend** – configure Azure Storage backend for Terraform state with locking and encryption.
+2. **Secret rotation** – automate Key Vault secret rotation and link to Databricks secret scopes.
+3. **Monitoring** – Azure Monitor + Databricks cluster metrics dashboards, alerting on job failures.
+4. **Cost controls** – auto-termination policies on all clusters, budget alerts per Resource Group.
+5. **Multi-environment strategy** – separate pipelines for dev/staging/prod with environment-specific approvals
 
 ## Python Job – How to Run
 

@@ -1,0 +1,6 @@
+# MAD Platform - Dev Environment Variables
+# Update the AAD group IDs with real values from your Azure AD
+
+location                = "westeurope"
+analytics_aad_group_id  = "4e5caa45-ec19-433d-8242-564082acc8ad"
+ingest_aad_group_id     = "882fa592-906f-4471-8466-6703266e4244"
