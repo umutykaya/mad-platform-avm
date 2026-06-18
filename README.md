@@ -1,4 +1,4 @@
-# MAD Platform – Medior DevOps Engineer Technical Assignment
+# MAD Platform – Technical Assignment
 
 > **AI assistance note:** Perplexity AI assisted in generating the Terraform skeleton, Python boilerplate, and README structure. All code was reviewed and understood before submission.
 
