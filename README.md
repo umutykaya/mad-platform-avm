@@ -6,7 +6,7 @@
 
 ## Design & Assumptions
 
-![High-Level Design](docs/HLD.png)
+![High-Level Design](docs/HLD.jpg)
 
 ### Architecture Overview
 
