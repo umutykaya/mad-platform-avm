@@ -16,6 +16,7 @@ permissions:
 
 jobs:
   authenticate:
+    name: Authenticate with Azure
     runs-on: ubuntu-latest
     steps:
       - name: Azure Login (OIDC)
@@ -37,9 +38,6 @@ jobs:
         working-directory: infra/envs/dev
 
     steps:
-      - name: Verify subscription
-        run: az account show
-
       - uses: actions/checkout@v4
 
       - name: Setup Terraform
