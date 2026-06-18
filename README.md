@@ -143,11 +143,11 @@ module "finance" {
 
 Automated deployment** – extend CI/CD pipeline to run `terraform apply` automatically on main branch merges with approval gates.
 
-1. **Remote state backend** – configure Azure Storage backend for Terraform state with locking and encryption.
-2. **Secret rotation** – automate Key Vault secret rotation and link to Databricks secret scopes.
-3. **Monitoring** – Azure Monitor + Databricks cluster metrics dashboards, alerting on job failures.
-4. **Cost controls** – auto-termination policies on all clusters, budget alerts per Resource Group.
-5. **Multi-environment strategy** – separate pipelines for dev/staging/prod with environment-specific approvals
+1. **Remote state backend**: configure Azure Storage backend for Terraform state with locking and encryption.
+2. **Secret rotation**: automate Key Vault secret rotation and link to Databricks secret scopes.
+3. **Monitoring**: Azure Monitor + Databricks cluster metrics dashboards, alerting on job failures.
+4. **Cost controls**: auto-termination policies on all clusters, budget alerts per Resource Group.
+5. **Multi-environment strategy**: separate pipelines for dev/staging/prod with environment-specific approvals
 
 ## Python Job – How to Run
 
