@@ -156,6 +156,12 @@ gh secret set AZURE_TENANT_ID       --repo <owner>/<repo> --body "<tenantId>"
 gh secret set AZURE_SUBSCRIPTION_ID --repo <owner>/<repo> --body "<subscriptionId>"
 ```
 
+```bash
+gh secret set AZURE_CLIENT_ID       --repo umutykaya/mad-platform-avm --body "3f454ad0-edba-49a2-b8e3-e8d355939ffd"
+gh secret set AZURE_TENANT_ID       --repo umutykaya/mad-platform-avm --body "7544478d-c556-46fc-bf16-e9fb13329d2a"
+gh secret set AZURE_SUBSCRIPTION_ID --repo umutykaya/mad-platform-avm --body "98014c53-83b7-4bfb-a4a4-2e31b0f22465"
+```
+
 ### 4) Workflow requirements for OIDC
 
 ```yaml

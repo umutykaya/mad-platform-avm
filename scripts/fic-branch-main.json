@@ -1,0 +1,7 @@
+{
+  "name": "gh-main-branch",
+  "issuer": "https://token.actions.githubusercontent.com",
+  "subject": "repo:umutykaya/mad-platform-avm:ref:refs/heads/main",
+  "description": "GitHub Actions access for main branch",
+  "audiences": ["api://AzureADTokenExchange"]
+}
