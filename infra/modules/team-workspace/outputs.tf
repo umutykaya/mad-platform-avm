@@ -5,12 +5,12 @@ output "resource_group_name" {
 
 output "databricks_workspace_url" {
   description = "URL of the Databricks workspace."
-  value       = module.databricks_workspace.workspace_url
+  value       = module.databricks_workspace.databricks_workspace_url
 }
 
 output "databricks_workspace_id" {
   description = "Azure resource ID of the Databricks workspace."
-  value       = module.databricks_workspace.resource_id
+  value       = module.databricks_workspace.databricks_id
 }
 
 output "storage_account_name" {

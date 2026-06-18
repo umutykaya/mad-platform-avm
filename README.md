@@ -27,7 +27,7 @@ Azure Subscription
 
 - **One Databricks workspace per team** – total isolation of notebooks, jobs, clusters, and secrets.
 - **One Storage Account + Container per team** – each team's Managed Identity is assigned `Storage Blob Data Contributor` on its own container only.
-- **Azure RBAC** controls who can operate the workspace (Contributor on the Resource Group, scoped per team AAD group).
+- **Azure RBAC** controls who can operate the workspace (Contributor on the Resource Group, scoped per team Azure Active Directory (AAD) group).
 - **Databricks Unity Catalog** (future) or workspace-level ACLs enforce row/table-level access inside Databricks.
 - **Key Vault** in the shared RG stores secrets referenced by both workspaces via secret scopes – teams cannot cross-read each other's secrets.
 
@@ -47,7 +47,7 @@ infra/
 
 ### Key assumptions
 
-1. AAD groups `grp-mad-analytics` and `grp-mad-ingest` already exist.
+1. AAD groups `grp-mad-analytics` and `grp-mad-ingest` have been created and configured in terraform.tfvars.
 2. A single Azure subscription is used; Resource Groups give billing and RBAC boundaries.
 3. `Standard_LRS` storage is sufficient for dev; prod would use `ZRS` or `GRS`.
 4. No VNet injection is modelled here – a next step for production.
@@ -61,7 +61,19 @@ infra/
 
 ```bash
 brew install terraform   # or https://developer.hashicorp.com/terraform/install
-azure-cli login          # az login
+az login                 # authenticate to Azure
+```
+
+### Azure AD Groups
+
+The following groups have been created:
+- **grp-mad-analytics** (ID: `4e5caa45-ec19-433d-8242-564082acc8ad`)
+- **grp-mad-ingest** (ID: `882fa592-906f-4471-8466-6703266e4244`)
+
+To add users to these groups:
+```bash
+az ad group member add --group grp-mad-analytics --member-id <user-object-id>
+az ad group member add --group grp-mad-ingest --member-id <user-object-id>
 ```
 
 ### Run plan for the analytics team (dev)
