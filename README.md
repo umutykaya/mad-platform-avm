@@ -15,12 +15,12 @@ Azure Subscription
 ├── Resource Group: rg-mad-shared (shared infra: networking, Key Vault)
 ├── Resource Group: rg-mad-analytics
 │   ├── Databricks Workspace: dbw-mad-analytics-<env>
-│   ├── Storage Account: stmadanalytics<env>
+│   ├── Storage Account: st-mad-analytics<env>
 │   │   └── Container: analytics-data
 │   └── Managed Identity: mi-mad-analytics
 └── Resource Group: rg-mad-ingest
     ├── Databricks Workspace: dbw-mad-ingest-<env>
-    ├── Storage Account: stmadingest<env>
+    ├── Storage Account: st-mad-ingest<env>
     │   └── Container: ingest-data
     └── Managed Identity: mi-mad-ingest
 ```
